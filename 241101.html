@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<script>
+			function greetings(name) {
+				alert('Hi, '+name+"!");
+			}
+			
+			let greetings2 = function(name) {
+				alert('Hi2, '+name+"!");
+			}
+
+			let greetings3 = async (name) => {
+				abc = 4;
+				alert('Hi3, '+name+"!");
+			}
+		</script>
+	</head>
+	<body>
+		Тут буде щось за 1 листопада
+		<script>
+			const a = 1;
+			var b = "string";
+			let c = 0.56;
+			console.log("Повідомлення: "+a+c+b);
+			// 10.56string
+			змінна = "рядок";
+			//greetings(змінна);
+
+			let obj = {
+				f1: a,
+				f2: b,
+				f3: greetings3,
+				field: "abyrvalg"
+			};
+			
+			console.log(obj);
+			console.log("test"+ obj.f1);
+			//obj.f3("Я");
+
+			console.log("Повідомлення: "+a+c);
+			console.log("Повідомлення: "+(a+c));
+			d = 55555555555555555555555555555555555555555555555555555555n;
+			console.log("Повідомлення: "+(d+2n));
+			console.log(змінна);
+			//greetings2(змінна);
+			//greetings3(змінна);
+			//console.log(abc);
+			
+			let i;
+			console.log("i = "+i);
+			
+			console.log(typeof d);
+			d = 2.3;			
+			console.log(typeof d);
+			
+		</script>
+	</body>
+</html>
+
