@@ -1,0 +1,26 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<h1>title</h1>
+		<p>Paragraph</p>
+		<div>Divider</div>
+		<input type="button" id="del" value="Щось додати" />
+
+		<script>
+			//alert(document.body.innerHTML);
+			//document.body.innerHTML = "New body";
+			var button = document.getElementById("del");
+			count = 1;
+			var div = document.getElementsByTagName("div");
+			
+			
+			button.addEventListener("click", (event) => {
+				//document.body.innerHTML = "New body";
+				div[0].innerHTML += "<p>" + count*Math.random() + "</p>";
+				count++;
+			});
+		</script>
+	</body>
+<html>
+

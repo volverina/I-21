@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<script>
+			addEventListener("DOMContentLoaded", (event) => {
+				var button = document.getElementById("age");
+				var inputs = document.getElementsByName("user_age");
+				var labels = document.querySelectorAll("label");
+				
+				button.addEventListener("click", (event) => {
+					if(inputs.length == 0) {
+						alert("input відсутні");
+					}
+					for(var i = 0; i < inputs.length; i++) {
+						alert(inputs[i].value + " " + inputs[i].checked);
+					}
+					for(var i = 0; i < labels.length; i++) {
+						labels[i].innerHTML = "";
+					}
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<table>
+		  <tr>
+		    <td>Ваш вік:</td>
+		    <td>
+		    	  <label>
+		    	  	  <input type="radio" name="user_age" value="children"> молодше 18
+		    	  </label>
+		    	  <label>
+		    	  	  <input type="radio" name="user_age" value="youth" checked> від 18 до 22
+		    	  </label>
+		    	  <label>
+		    	  	  <input type="radio" name="user_age" value="intheair"> від 22 до 48
+		    	  </label>
+		    	  <label>
+		    	  	  <input type="radio" name="user_age" value="invisible"> після 48
+		    	  </label>
+		    </td>
+		  </tr>
+		</table>
+		<input type="button" id="age" value="Визначити вік" />
+
+
+	</body>
+</html>
