@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="/react/react.development.js"></script>
+    <script src="/react/react-dom.development.js"></script>
+    <script src="/react/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+    	<!-- ось тут буде програма -->
+    </div>
+    <script type="text/babel">
+    	const MyApp = function() {
+    	    //return <1>Hello, world!</h1>;
+    	    //return React.createElement("h1", null, "Hello, world!");
+    	    return <h1 id="myheader" name="name1">
+			<span>
+				<em>не знаю що</em>
+			</span>
+		</h1>;
+      	};
+
+    
+	ReactDOM.render(
+		//MyApp(), 
+		<MyApp />,
+		document.getElementById("app")
+	)
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="/react/react.development.js"></script>
+    <script src="/react/react-dom.development.js"></script>
+    <script src="/react/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+    	<!-- ось тут буде програма -->
+    </div>
+
+    <div id="app2">
+    	<!-- ось тут буде програма -->
+    </div>
+
+    <script type="text/babel">
+    	class TextAreaCounter extends React.Component {
+    		constructor() {
+    			super();
+    			this.state = {};
+    		}
+    		
+    		onTextChange(event) {
+    			this.setState(
+    				{
+    					text: event.target.value
+    				}
+    			);
+    			//console.log(event.target.value);
+    		}
+    	
+    		render() {
+    			const ourtext = 'text' in this.state ? this.state.text : this.props.text;
+	    	    	return (
+	    	    		<div>
+	    	    			<textarea 
+	    	    				value={ourtext}
+	    	    				onChange={ event => this.onTextChange(event)}
+	    	    			/>
+	    	    			<h3>Довжина тексту = {ourtext.length}</h3>
+	    	    		</div>
+	    	    	);
+    	    	}
+    	}
+    	
+    	
+    	TextAreaCounter.defaultProps = {
+    		text: ""
+    	};
+    
+	ReactDOM.render(
+		<TextAreaCounter text="Єлізавета Олександрівна" />,
+		document.getElementById("app")
+	)
+
+	ReactDOM.render(
+		<TextAreaCounter />,
+		document.getElementById("app2")
+	)
+
+    </script>
+    
+    <div id="app3">
+    	<!-- ось тут буде програма JS -->
+    	<textarea id="text"></textarea>
+    	<h3 id="textlen">Довжина тексту = 0</h3>
+    </div>
+
+    <script>
+    	textarea3 = document.getElementById("text");
+    	text3len = document.getElementById("textlen");
+    	textarea3.addEventListener("input", (event) => {
+    		const text = textarea3.value;
+    		text3len.innerHTML = "Довжина тексту = " + text.length;
+    	});
+
+    </script>
+    
+  </body>
+</html>

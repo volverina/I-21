@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="/react/react.development.js"></script>
+    <script src="/react/react-dom.development.js"></script>
+  </head>
+  <body>
+    <div id="app">
+    	<!-- ось тут буде програма -->
+    </div>
+    <script>
+	ReactDOM.render(
+		React.createElement(
+			"h1", 
+			{
+				id: "myheader", 
+				name: "name1"
+			}, 
+			//"Заголовок"
+			React.createElement(
+				"span",
+				null,
+				React.createElement('em', null, "не знаю що")
+				//"не знаю що"
+			)
+		), 
+		document.getElementById("app")
+	)
+
+    </script>
+  </body>
+</html>

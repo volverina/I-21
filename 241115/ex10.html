@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="/react/react.development.js"></script>
+    <script src="/react/react-dom.development.js"></script>
+    <script src="/react/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+    	<!-- ось тут буде програма -->
+    </div>
+
+    <script type="text/babel">
+    	class Logger extends React.Component {
+    		static getName() {}
+    		
+   		componentDidMount() {
+    			console.log(this.constructor.getName() + "::componentDidMount");
+    		}
+    		
+    		componentWillUnmount() {
+    			console.log(this.constructor.getName() + "::componentWillUnmount");
+    		}
+    		
+    		componentDidUpdate(prevProps, prevState, snapshot) {
+    			console.log(this.constructor.getName() + "::componentDidUpdate", prevProps, prevState, snapshot);
+    		}
+    	}
+    	
+    	class Counter extends Logger {
+    		static getName() {
+    			return 'Counter';
+    		}
+    	
+    		render() {
+	    	    	return <h3>Довжина тексту = {this.props.count}</h3>;
+    	    	}
+    	}
+    	
+    	Counter.defaultProps = {
+    		count : 0
+    	};
+    
+
+    	class TextAreaCounter extends React.Component {
+    		static getName() {
+    			return 'TextAreaCounter';
+    		}
+    	
+    		constructor() {
+    			super();
+    			this.state = {};
+    			this.onTextChange = this.onTextChange.bind(this);
+    			console.log("Конструктор");
+    		}
+
+    		onTextChange = (event) => {
+    			this.setState(
+    				{
+    					text: event.target.value
+    				}
+    			);
+    		}
+    	
+    		render() {
+    			const ourtext = 'text' in this.state ? this.state.text : this.props.text;
+	    	    	return (
+	    	    		<div>
+	    	    			<textarea 
+	    	    				value={ourtext}
+	    	    				onChange={this.onTextChange}
+	    	    			/>
+	    	    			{
+	    	    				text.length > 0 ? <Counter count={text.length} /> : null
+	    	    			}
+	    	    		</div>
+	    	    	);
+    	    	}
+    	}
+    	
+    	TextAreaCounter.defaultProps = {
+    		text: ""
+    	};
+    
+	const objTextAreaCounter = ReactDOM.render(
+		<TextAreaCounter text="Єлізавета Олександрівна" />,
+		document.getElementById("app")
+	);
+
+	objTextAreaCounter.setState(
+		{
+	    		"text": "Єлізавета???"
+		}
+	);
+
+	const appNode = ReactDOM.findDOMNode(objTextAreaCounter);
+//	appNode.innerHTML = "";
+	
+
+    </script>
+    
+    
+  </body>
+</html>

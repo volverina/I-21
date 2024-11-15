@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+  </head>
+  <body>
+    <div id="app">
+    	<!-- ось тут буде програма -->
+    </div>
+
+    <div id="app2">
+    	<!-- ось тут буде програма -->
+    </div>
+
+    <script src="/react/react.development.js"></script>
+    <script src="/react/react-dom.development.js"></script>
+    <script src="/react/babel.min.js"></script>
+
+    <script type="text/babel">
+    	class MyComponent extends React.Component {
+    		render() {
+	    	    return <span>Моє ім'я <em>{this.props.name}</em></span>;
+    		}
+    	}
+    
+	ReactDOM.render(
+		//React.createElement(MyComponent),
+		<MyComponent name="Єлізавета Олександрівна"/>,
+		document.getElementById("app")
+	)
+
+	ReactDOM.render(
+		//React.createElement(MyComponent),
+		<MyComponent name="Не Єлізавета Олександрівна"/>,
+		document.getElementById("app2")
+	)
+	
+	/*
+	ReactDOM.render(
+		//React.createElement(MyComponent),
+		<MyComponent name="Заголовок вікна"/>,
+		document.head.title
+	)
+	*/
+	
+
+    </script>
+  </body>
+</html>

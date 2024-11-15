@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="/react/react.development.js"></script>
+    <script src="/react/react-dom.development.js"></script>
+    <script src="/react/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+    	<!-- ось тут буде програма -->
+    </div>
+
+    <script type="text/babel">
+    	class TextAreaCounter extends React.Component {
+    		constructor() {
+    			super();
+    			this.state = {};
+    			this.onTextChange = this.onTextChange.bind(this);
+    			console.log("Конструктор");
+    		}
+
+    		containsForbiddenWord(str, forbiddenWords) {
+		    // Перевіряємо кожне слово зі списку
+		    return forbiddenWords.some(word => str.includes(word));
+		}
+
+   		    		componentDidMount() {
+    			console.log("componentDidMount");
+    		}
+    		
+    		componentWillUnmount() {
+    			console.log("componentWillUnmount");
+    		}
+    		
+    		componentDidUpdate(prevProps, prevState, snapshot) {
+    			console.log("componentDidUpdate", prevProps, prevState, snapshot);
+    		}
+    		
+    		getSnapshotBeforeUpdate(prevProps, prevState) {
+    			console.log("getSnapshotBeforeUpdate", prevProps, prevState);
+    		}
+    		
+    		shouldComponentUpdate(nextProps, nextState) {
+    			console.log("shouldComponentUpdate", nextProps, nextState);
+    			// Приклад використання:
+			const forbiddenWords = ["заборонене", "табу", "небажане", "путін"];
+    		
+			if(this.containsForbiddenWord(nextState.text, forbiddenWords))
+    				return false;
+    			
+    			if(nextState.text.length > 20)
+    				return false;
+    			return true;
+    		}
+    		
+    		onTextChange = (event) => {
+    			this.setState(
+    				{
+    					text: event.target.value
+    				}
+    			);
+    			//console.log(event.target.value);
+    		}
+    	
+    		render() {
+    			const ourtext = 'text' in this.state ? this.state.text : this.props.text;
+	    	    	return (
+	    	    		<div>
+	    	    			<textarea 
+	    	    				value={ourtext}
+	    	    				onChange={this.onTextChange}
+	    	    			/>
+	    	    			<h3>Довжина тексту = {ourtext.length}</h3>
+	    	    		</div>
+	    	    	);
+    	    	}
+    	}
+    	
+    	
+    	TextAreaCounter.defaultProps = {
+    		text: ""
+    	};
+    
+	const objTextAreaCounter = ReactDOM.render(
+		<TextAreaCounter text="Єлізавета Олександрівна" />,
+		document.getElementById("app")
+	);
+
+	objTextAreaCounter.setState(
+		{
+	    		"text": "Єлізавета???"
+		}
+	);
+
+	const appNode = ReactDOM.findDOMNode(objTextAreaCounter);
+//	appNode.innerHTML = "";
+	
+
+    </script>
+    
+    
+  </body>
+</html>
