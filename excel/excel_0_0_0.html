@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Excel v. 0.0.0</title>
+    <link rel="stylesheet" type="text/css" href="excel.css">
+    <script src="../react/react.production.min.js"></script>
+    <script src="../react/react-dom.production.min.js"></script>
+    <script src="../react/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+    	<!-- ось тут буде програма -->
+    </div>
+
+    <script type="text/babel">
+    	const headers = ["Book", "Author", "Language", "Published", "Sales", "Genre"];
+    	
+    	const data = [
+		["A Tale of Two Cities", "Charles Dickens", "English", "1859", "200 million", "Historical fiction"],
+		["The Little Prince (Le Petit Prince)", "Antoine de Saint-Exupéry", "French", "1943", "200 million", "Fantasy, children's fiction"],
+		["The Alchemist (O Alquimista)", "Paulo Coelho", "Portuguese",	"1988",	"150 million", "Fantasy"],
+		["Harry Potter and the Philosopher's Stone", "J. K. Rowling", "English", "1997", "120 million", "Fantasy, children's fiction"],
+    ["And Then There Were None", "Agatha Christie", "English", "1939", "100 million", "Mystery"],
+    ["Dream of the Red Chamber (紅樓夢)", "Cao Xueqin", "Chinese", "1791", "100 million", "Family saga"],
+    ["The Hobbit", "J. R. R. Tolkien", "English", "1937", "100 million", "Fantasy, children's fiction"],
+	];
+	
+	class Excel extends React.Component {
+	
+		render() {
+			const headers = [];
+			for(const column of this.props.headers) {
+				headers.push(<th>{column}</th>);
+			}
+			//console.log(headers);
+			return (
+				<table>
+					<thead>
+						<tr>{headers}</tr>
+					</thead>
+				</table>
+			);
+		}
+	
+	/*
+		render() {
+			return (
+				<table>
+					<thead>
+						<tr>
+							{this.props.headers.map(
+								column => {
+									return <th>{column}</th>;
+								}
+							)}
+						</tr>
+					</thead>
+				</table>
+			);
+		}
+	*/
+	/*
+		render() {
+			return (
+				<table>
+					<thead>
+						<tr>
+							{this.props.headers.map(
+								function(column) { 
+									return <th>{column}</th>; 
+								}
+							)}
+						</tr>
+					</thead>
+				</table>
+			);
+		}
+	*/
+	}
+	
+	//console.log(headers);
+	
+	ReactDOM.render(
+		<Excel headers = {headers} />,
+		document.getElementById("app")
+	)
+
+    </script>
+  
+    
+  </body>
+</html>
+

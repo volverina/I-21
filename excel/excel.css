@@ -1,0 +1,37 @@
+/* Встановлюємо стиль для всього документа */
+html {
+    background: white; /* Білий фон */
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif; /* Шрифт Гельветика або Аріал */
+    font-size: 18px; /* Розмір шрифту */
+    -webkit-font-smoothing: antialiased; /* Згладжування для WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Згладжування для macOS */
+    text-rendering: optimizeSpeed;
+}
+
+/* Стиль для заголовків таблиці */
+th {
+    padding: 5px; /* Відступ всередині елементу */
+    // text-align: left; /* Вирівнювання тексту (можете змінити на інше, якщо потрібно) */
+    cursor: pointer; /* Наведення курсора */
+    border-right: 1px solid #ccc; /* Роздільники стовпців */
+}
+
+/* Стиль для клітинок таблиці */
+td {
+    padding: 5px; /* Відступ всередині елементу */
+    border-top: 1px solid black; /* Чорна границя у 1 піксель */
+    //border: 1px solid black; /* Чорна границя у 1 піксель */
+    cursor: pointer; /* Наведення курсора */
+    border-right: 1px solid #ccc; /* Роздільники стовпців */
+}
+
+/* Стиль для таблиці */
+table {
+    margin: 20px; /* Відступ таблиці */
+    border: 1px solid black; /* Чорна границя у 1 піксель */
+    //border-collapse: collapse; /* Об'єднання границь для кращого вигляду */
+}
+

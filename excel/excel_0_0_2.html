@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Excel v. 0.0.1</title>
+    <link rel="stylesheet" type="text/css" href="excel.css">
+    <script src="../react/react.production.min.js"></script>
+    <script src="../react/react-dom.production.min.js"></script>
+    <script src="../react/prop-types.min.js"></script>
+    <script src="../react/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+    	<!-- ось тут буде програма -->
+    </div>
+
+    <script type="text/babel">
+    	const headers = ["Book", "Author", "Language", "Published", "Sales", "Genre"];
+    	
+    	const data = [
+		["A Tale of Two Cities", "Charles Dickens", "English", "1859", "200 million", "Historical fiction"],
+		["The Little Prince (Le Petit Prince)", "Antoine de Saint-Exupéry", "French", "1943", "200 million", "Fantasy, children's fiction"],
+		["The Alchemist (O Alquimista)", "Paulo Coelho", "Portuguese",	"1988",	"150 million", "Fantasy"],
+		["Harry Potter and the Philosopher's Stone", "J. K. Rowling", "English", "1997", "120 million", "Fantasy, children's fiction"],
+    ["And Then There Were None", "Agatha Christie", "English", "1939", "100 million", "Mystery"],
+    ["Dream of the Red Chamber (紅樓夢)", "Cao Xueqin", "Chinese", "1791", "100 million", "Family saga"],
+    ["The Hobbit", "J. R. R. Tolkien", "English", "1937", "100 million", "Fantasy, children's fiction"],
+	];
+	
+	function deepClone(obj) {
+  // Перевіряємо, чи значення є об'єктом або масивом
+  if (obj === null || typeof obj !== 'object') {
+    return obj; // Повертаємо примітивні типи, такі як числа, рядки тощо
+  }
+
+  // Створюємо новий об'єкт або масив залежно від вхідного значення
+  const clone = Array.isArray(obj) ? [] : {};
+
+  // Рекурсивно копіюємо кожну властивість
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      clone[key] = deepClone(obj[key]); // Використовуємо рекурсію для вкладених структур
+    }
+  }
+
+  return clone;
+}
+	
+	class Excel extends React.Component {
+		constructor(props) {
+			super();
+			this.state = {data: props.initialData};
+			this.sort = this.sort.bind(this);
+		}
+		
+		sort(evt) {
+			//alert("Pressed!");
+			console.log(evt.target.cellIndex);
+			const column = evt.target.cellIndex;
+			
+			const datacopy = deepClone(this.state.data);
+			//const datacopy = this.state.data;
+			
+			datacopy.sort(
+				(a, b) => {
+					if (a[column] === b[column])
+						return 0;
+					else
+						if (a[column] > b[column])
+							return 1;
+						else	
+							return -1;
+				}
+			);
+			
+			this.setState({data: datacopy});
+		}
+		
+		render() {
+			return (
+				<table>
+					<thead onClick={this.sort}>
+						<tr>
+							{this.props.headers.map(
+								(column, idx) => (<th key={idx}>{column}</th>)
+							)}
+						</tr>
+					</thead>
+					<tbody>
+						{this.state.data.map(
+							(row, idx) => (
+								<tr key={idx}>
+									{row.map(
+										(cell, idx) => (<td key={idx}>{cell}</td>)
+									)}
+								</tr>
+							)
+						)}
+					</tbody>
+				</table>
+			);
+		}
+	}
+	
+	
+	Excel.propTypes = {
+		headers: PropTypes.arrayOf(PropTypes.string),
+		initialData: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
+	};
+	//console.log(headers);
+	
+	ReactDOM.render(
+		<Excel headers = {headers} initialData = {data}/>,
+		document.getElementById("app")
+	)
+
+    </script>
+  
+    
+  </body>
+</html>
+
