@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { FilesetResolver, HandLandmarker } from 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest';
+import { FilesetResolver, HandLandmarker } from 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.17';
 
 document.addEventListener("DOMContentLoaded", async() => { 
 	const c1 = document.getElementById("c1");
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async() => {
 
 	const vision = await FilesetResolver.forVisionTasks(
 	  // path/to/wasm/root
-	  "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/wasm"
+	  "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.17/wasm"
 	);
 	const handLandmarker = await HandLandmarker.createFromOptions(
 	    vision,
